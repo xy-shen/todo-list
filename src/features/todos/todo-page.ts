@@ -1,5 +1,6 @@
-import { Component, signal, computed } from '@angular/core';
+import { Component, signal, computed, inject, effect } from '@angular/core';
 import { Todo } from './models/todo.model';
+import { StorageService } from './services/todo-store.service';
 import { TodoForm, CreateTodoInput } from './todo-form';
 import { TodoList } from './todo-list';
 
@@ -11,12 +12,11 @@ import { TodoList } from './todo-list';
   styleUrl: './todo-page.css',
 })
 export class TodoPage {
-  readonly todos = signal<Todo[]>([
-    { id: 1, title: 'Learn Angular basics', completed: true },
-    { id: 2, title: 'Build todo page', completed: false },
-    { id: 3, title: 'Add todo form later', completed: false },
-  ]);
+  private readonly storage = inject(StorageService);
+  private readonly storageKey = 'todos';
 
+  readonly todos = signal<Todo[]>(this.loadTodos());
+  
   readonly totalCount = computed(() => this.todos().length);
   readonly completedCount = computed(
     () => this.todos().filter(todo => todo.completed).length
@@ -24,6 +24,12 @@ export class TodoPage {
   readonly remainingCount = computed(
     () => this.todos().filter(todo => !todo.completed).length
   );
+
+  constructor() {
+    effect(() => {
+      this.storage.setItem(this.storageKey, this.todos());
+    });
+  }
 
   addTodo(input: CreateTodoInput): void {
     const newTodo: Todo = {
@@ -51,7 +57,7 @@ export class TodoPage {
     );
   }
 
-  trackByTodoId(_index: number, todo: Todo): number {
-    return todo.id;
+  private loadTodos(): Todo[] {
+    return this.storage.getItem<Todo[]>(this.storageKey) ?? [];
   }
 }
