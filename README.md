@@ -2,6 +2,12 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.3.
 
+## Dataflow
+
+fetch: storage -> todo-page -> todo-list -> todo-item
+create: todo-form -> todo-page -> storage
+complete/remove event: todo-item -> todo-list -> todo-page -> storage
+
 ## Development server
 
 To start a local development server, run:
