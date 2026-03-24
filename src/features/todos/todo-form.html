@@ -1,0 +1,37 @@
+<form class="todo-form" [formGroup]="form" (ngSubmit)="submit()">
+  <div class="todo-form__field">
+    <label class="todo-form__label" for="todo-title">New todo</label>
+
+    <input
+      id="todo-title"
+      type="text"
+      class="todo-form__input"
+      formControlName="title"
+      placeholder="What do you need to do?"
+      maxlength="100"
+    />
+
+    <div class="todo-form__meta">
+      <span class="todo-form__hint">Keep it short and clear</span>
+      <span class="todo-form__count">
+        {{ titleControl.value.length }}/100
+      </span>
+    </div>
+
+    @if (titleControl.touched && titleControl.errors?.['required']) {
+      <p class="todo-form__error">Please enter a todo title.</p>
+    }
+
+    @if (titleControl.touched && titleControl.errors?.['maxlength']) {
+      <p class="todo-form__error">Todo title must be 100 characters or less.</p>
+    }
+  </div>
+
+  <button
+    class="todo-form__submit"
+    type="submit"
+    [disabled]="form.invalid"
+  >
+    Add Todo
+  </button>
+</form>
