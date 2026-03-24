@@ -1,4 +1,5 @@
 import { Component, signal, computed } from '@angular/core';
+import { TodoForm, CreateTodoInput } from './todo-form';
 
 export interface Todo {
   id: number;
@@ -9,7 +10,7 @@ export interface Todo {
 @Component({
   selector: 'app-todo-page',
   standalone: true,
-  imports: [],
+  imports: [TodoForm],
   templateUrl: './todo-page.html',
   styleUrl: './todo-page.css',
 })
@@ -27,6 +28,16 @@ export class TodoPage {
   readonly remainingCount = computed(
     () => this.todos().filter(todo => !todo.completed).length
   );
+
+  addTodo(input: CreateTodoInput): void {
+    const newTodo: Todo = {
+      id: Date.now(),
+      title: input.title,
+      completed: false,
+    };
+
+    this.todos.update(current => [newTodo, ...current]);
+  }
 
   trackByTodoId(_index: number, todo: Todo): number {
     return todo.id;

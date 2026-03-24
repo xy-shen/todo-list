@@ -113,6 +113,12 @@
   padding: 1rem 0 0.5rem;
 }
 
+.todo-page__divider {
+  margin: 1.25rem 0;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+
 @media (max-width: 640px) {
   .todo-page__summary {
     grid-template-columns: 1fr;

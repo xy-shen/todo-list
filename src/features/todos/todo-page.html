@@ -25,9 +25,14 @@
 
   <section class="todo-page__panel">
     <div class="todo-page__panel-header">
-      <h2>Your Todos</h2>
-      <button type="button" disabled>Add Todo</button>
+      <h2>Add a Todo</h2>
     </div>
+
+    <app-todo-form (addTodo)="addTodo($event)" />
+
+    <hr class="todo-page__divider" />
+
+    <h2>Your Todos</h2>
 
     <p class="todo-page__note">
       We’ll connect the form, list, and item components next.
