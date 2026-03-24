@@ -1,12 +1,7 @@
 import { Component, signal, computed } from '@angular/core';
+import { Todo } from './models/todo.model';
 import { TodoForm, CreateTodoInput } from './todo-form';
 import { TodoList } from './todo-list';
-
-export interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-}
 
 @Component({
   selector: 'app-todo-page',

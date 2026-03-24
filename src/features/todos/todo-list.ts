@@ -5,13 +5,8 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
+import { Todo } from './models/todo.model';
 import { TodoItem } from './todo-item';
-
-export interface Todo {
-  id: number;
-  title: string;
-  completed: boolean;
-}
 
 @Component({
   selector: 'app-todo-list',
