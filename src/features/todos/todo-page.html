@@ -1,0 +1,51 @@
+<section class="todo-page">
+  <header class="todo-page__header">
+    <h1>Todo List</h1>
+    <p class="todo-page__subtitle">
+      A simple Angular todo app
+    </p>
+  </header>
+
+  <section class="todo-page__summary">
+    <div class="summary-card">
+      <span class="summary-card__label">Total</span>
+      <strong class="summary-card__value">{{ totalCount() }}</strong>
+    </div>
+
+    <div class="summary-card">
+      <span class="summary-card__label">Completed</span>
+      <strong class="summary-card__value">{{ completedCount() }}</strong>
+    </div>
+
+    <div class="summary-card">
+      <span class="summary-card__label">Remaining</span>
+      <strong class="summary-card__value">{{ remainingCount() }}</strong>
+    </div>
+  </section>
+
+  <section class="todo-page__panel">
+    <div class="todo-page__panel-header">
+      <h2>Your Todos</h2>
+      <button type="button" disabled>Add Todo</button>
+    </div>
+
+    <p class="todo-page__note">
+      We’ll connect the form, list, and item components next.
+    </p>
+
+    <ul class="todo-preview-list">
+      @for (todo of todos(); track trackByTodoId($index, todo)) {
+        <li class="todo-preview-item">
+          <label>
+            <input type="checkbox" [checked]="todo.completed" disabled />
+            <span [class.completed]="todo.completed">
+              {{ todo.title }}
+            </span>
+          </label>
+        </li>
+      } @empty {
+        <li class="todo-preview-empty">No todos yet.</li>
+      }
+    </ul>
+  </section>
+</section>
