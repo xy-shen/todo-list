@@ -38,7 +38,11 @@
       We’ll connect the form, list, and item components next.
     </p>
 
-    <app-todo-list [todos]="todos()"/>
+    <app-todo-list
+      [todos]="todos()"
+      (toggleTodo)="toggleTodo($event)"
+      (removeTodo)="removeTodo($event)"
+    />
 
   </section>
 </section>

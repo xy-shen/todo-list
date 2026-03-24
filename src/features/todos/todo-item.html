@@ -1,0 +1,26 @@
+<div class="todo-item">
+  <label class="todo-item__main">
+    <input
+      class="todo-item__checkbox"
+      type="checkbox"
+      [checked]="todo.completed"
+      (change)="onToggle()"
+    />
+
+    <span
+      class="todo-item__title"
+      [class.todo-item__title--completed]="todo.completed"
+    >
+      {{ todo.title }}
+    </span>
+  </label>
+
+  <button
+    class="todo-item__delete"
+    type="button"
+    (click)="onRemove()"
+    aria-label="Delete todo"
+  >
+    Delete
+  </button>
+</div>

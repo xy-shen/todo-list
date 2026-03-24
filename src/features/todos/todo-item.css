@@ -1,0 +1,40 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0;
+}
+
+.todo-item__main {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.todo-item__checkbox {
+  flex-shrink: 0;
+}
+
+.todo-item__title {
+  word-break: break-word;
+}
+
+.todo-item__title--completed {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-item__delete {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+}
+
+.todo-item__delete:hover {
+  background: #f3f3f3;
+}

@@ -40,6 +40,22 @@ export class TodoPage {
     this.todos.update(current => [newTodo, ...current]);
   }
 
+  toggleTodo(id: number): void {
+    this.todos.update(current =>
+      current.map(todo =>
+        todo.id === id
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      )
+    );
+  }
+
+  removeTodo(id: number): void {
+    this.todos.update(current =>
+      current.filter(todo => todo.id !== id)
+    );
+  }
+
   trackByTodoId(_index: number, todo: Todo): number {
     return todo.id;
   }

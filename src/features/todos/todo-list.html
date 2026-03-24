@@ -1,12 +1,11 @@
 <ul class="todo-list">
-  @for (todo of todos; track trackByTodoId($index, todo)) {
-    <li class="todo-list_item">
-      <label>
-        <input type="checkbox" [checked]="todo.completed" disabled />
-        <span [class.completed]="todo.completed">
-          {{ todo.title }}
-        </span>
-      </label>
+  @for (todo of todos; track todo.id) {
+    <li>
+      <app-todo-item
+        [todo]="todo"
+        (toggle)="toggleTodo.emit($event)"
+        (remove)="removeTodo.emit($event)"
+      />
     </li>
   } @empty {
     <li class="todo-list_empty">No todos yet.</li>
