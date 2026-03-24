@@ -1,5 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 import { TodoForm, CreateTodoInput } from './todo-form';
+import { TodoList } from './todo-list';
 
 export interface Todo {
   id: number;
@@ -10,7 +11,7 @@ export interface Todo {
 @Component({
   selector: 'app-todo-page',
   standalone: true,
-  imports: [TodoForm],
+  imports: [TodoForm, TodoList],
   templateUrl: './todo-page.html',
   styleUrl: './todo-page.css',
 })

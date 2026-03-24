@@ -38,19 +38,7 @@
       We’ll connect the form, list, and item components next.
     </p>
 
-    <ul class="todo-preview-list">
-      @for (todo of todos(); track trackByTodoId($index, todo)) {
-        <li class="todo-preview-item">
-          <label>
-            <input type="checkbox" [checked]="todo.completed" disabled />
-            <span [class.completed]="todo.completed">
-              {{ todo.title }}
-            </span>
-          </label>
-        </li>
-      } @empty {
-        <li class="todo-preview-empty">No todos yet.</li>
-      }
-    </ul>
+    <app-todo-list [todos]="todos()"/>
+
   </section>
 </section>
